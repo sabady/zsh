@@ -100,12 +100,6 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 #
 ## my aliases and variables
-alias legacy_belong='cd "$Belong_Legacy"'
-alias pep_on_aws='cd ~/repos/PEP_on_aws/ && git pull'
-alias belong_on_gcp='cd ~/repos/belong-on-aws/Belong_on_gcp/'
-alias belong_on_aws='cd ~/repos/belong-on-aws && git pull'
-alias prod_stack_cancer="cd ~/repos/prod_stack_cancer/"
-alias prod_stack_pep="cd ~/repos/prod_stack_pep"
 alias ..='cd ..'
 alias ks='ls'
 alias cs='clear'
@@ -143,6 +137,7 @@ zstyle ':completion:*:ssh:*' hosts
 autoload -Uz compinit && compinit -i
 
 # Functions
+# get resources list from a terraform file
 function get_resources_list {
     grep resource $1 | grep -v '^.*#' | awk '{print $2 $3}' | sed 's/""/./g' | tr -d '"' | xargs -I % sh -c 'echo -target %' | xargs; 
 }
